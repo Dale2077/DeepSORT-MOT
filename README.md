@@ -50,10 +50,6 @@
 
 ## 环境配置
 
-### 硬件
-
-- **训练设备**: NVIDIA RTX 5090
-
 ### 安装
 
 ```bash
@@ -188,7 +184,7 @@ python scripts/train_yolov8_mot17.py \
 # 1. 下载并放置 MOT17 数据集到 data/MOT17/ (见上文)
 # 2. 下载官方 Re-ID 权重
 python scripts/download_reid_weights.py --model osnet_x0_25_msmt17
-# 3. (可选) 微调 YOLOv8m 检测器
+# 3. 微调 YOLOv8m 检测器
 python scripts/convert_mot17_to_yolo.py
 python scripts/train_yolov8_mot17.py
 ```
@@ -196,7 +192,7 @@ python scripts/train_yolov8_mot17.py
 ### 运行跟踪
 
 ```bash
-# 使用 main.py 统一入口 (MOT17)
+# 使用 main.py 统一入口
 python main.py track --config configs/deepsort.yaml --sequence MOT17-02-SDP
 python main.py track --config configs/sort.yaml --sequence MOT17-09-SDP
 python main.py track --config configs/bytetrack.yaml --sequence MOT17-09-SDP
@@ -212,7 +208,7 @@ python main.py track --config configs/deepsort.yaml \
 实验结束后会自动在 `outputs/exp*/plots/` 下生成可视化图表。
 
 ```bash
-# 实验 1: 算法横向对比 (MOT17)
+# 实验 1: 算法横向对比
 python main.py experiment --exp 1
 
 # 实验 2: DeepSORT 参数消融
@@ -221,10 +217,10 @@ python main.py experiment --exp 2
 # 实验 3: 检测器消融
 python main.py experiment --exp 3
 
-# 运行全部实验 (MOT17)
+# 运行全部实验
 python main.py experiment --exp all
 
-# 在 MOT20 上运行实验 (跨域测试)
+# 在 MOT20 上运行实验
 python main.py experiment --exp 1 --data-root data/MOT20
 python main.py experiment --exp all --data-root data/MOT20
 ```
