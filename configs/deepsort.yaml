@@ -1,0 +1,31 @@
+tracker:
+  name: "DeepSORT"
+  max_age: 30
+  n_init: 3
+  max_iou_distance: 0.7
+  max_cosine_distance: 0.2
+  nn_budget: 100
+  lambda_weight: 0.98         # weight for appearance vs motion
+
+detector:
+  name: "yolov8m"             # "mot17_det" | "yolov8n" | "yolov8s" | "yolov8m"
+  weights: "models/yolov8m_mot17.pt"   # MOT17 fine-tuned weights (produced by scripts/train_yolov8_mot17.py)
+  confidence_threshold: 0.5
+  nms_threshold: 0.4
+
+reid:
+  model: "osnet_x0_25"        # torchreid model name
+  weights: "models/osnet_x0_25_msmt17.pth"  # obtain via scripts/download_reid_weights.py
+  input_size: [256, 128]      # [height, width]
+  batch_size: 32
+
+dataset:
+  root: "data/MOT17"
+  split: "train"
+  sequences: null
+
+output:
+  dir: "outputs"
+  save_tracks: true
+  save_video: false
+  visualize: false

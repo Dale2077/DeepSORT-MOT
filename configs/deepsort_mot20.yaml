@@ -1,0 +1,34 @@
+tracker:
+  name: "DeepSORT"
+  max_age: 30
+  n_init: 3
+  max_iou_distance: 0.7
+  max_cosine_distance: 0.2
+  nn_budget: 100
+  lambda_weight: 0.98
+
+detector:
+  # MOT20 is much denser than MOT17 (crowd scenes), so the MOT17-finetuned
+  # YOLO serves as a cross-domain generalisation test. Swap to "mot17_det"
+  # to use MOT20 public detections instead.
+  name: "yolov8m"
+  weights: "models/yolov8m_mot17.pt"
+  confidence_threshold: 0.5
+  nms_threshold: 0.4
+
+reid:
+  model: "osnet_x0_25"
+  weights: "models/osnet_x0_25_msmt17.pth"
+  input_size: [256, 128]
+  batch_size: 32
+
+dataset:
+  root: "data/MOT20"
+  split: "train"
+  sequences: null
+
+output:
+  dir: "outputs"
+  save_tracks: true
+  save_video: false
+  visualize: false

@@ -1,0 +1,21 @@
+tracker:
+  name: "SORT"
+  max_age: 30
+  min_hits: 3
+  iou_threshold: 0.3
+
+detector:
+  name: "mot17_det"           # MOT20 public detections use the same format
+  confidence_threshold: 0.5
+  nms_threshold: 0.4
+
+dataset:
+  root: "data/MOT20"
+  split: "train"              # "train" | "test"
+  sequences: null             # null = all sequences
+
+output:
+  dir: "outputs"
+  save_tracks: true
+  save_video: false
+  visualize: false

@@ -1,0 +1,53 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (too large for git)
+data/MOT17/train/*/img1/
+data/MOT17/test/*/img1/
+data/MOT17_yolo/
+data/MOT20
+
+# YOLO training runs
+runs/
+
+# Model weights
+models/*.pt
+models/*.pth
+!models/.gitkeep
+
+# Outputs
+outputs/tracks/
+outputs/videos/
+outputs/plots/
+outputs/logs/
+outputs/_reid_cache/
+outputs/Paper/
+outputs/thesis*.md
+outputs/polish_thesis_md.py
+outputs/*.doc
+outputs/*.docx
+outputs/*.pdf
+
+# Claude scratch
+.claude/
+
+# Jupyter
+.ipynb_checkpoints/

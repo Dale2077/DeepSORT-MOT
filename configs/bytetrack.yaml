@@ -1,0 +1,25 @@
+tracker:
+  name: "ByteTrack"
+  max_age: 30
+  min_hits: 3
+  high_threshold: 0.6         # high confidence threshold
+  low_threshold: 0.1          # low confidence threshold
+  iou_threshold: 0.3
+  second_iou_threshold: 0.5   # IoU threshold for second association
+
+detector:
+  name: "yolov8m"             # "mot17_det" | "yolov8n" | "yolov8s" | "yolov8m"
+  weights: "models/yolov8m_mot17.pt"   # MOT17 fine-tuned weights
+  confidence_threshold: 0.1   # lower threshold to get low-score detections
+  nms_threshold: 0.4
+
+dataset:
+  root: "data/MOT17"
+  split: "train"
+  sequences: null
+
+output:
+  dir: "outputs"
+  save_tracks: true
+  save_video: false
+  visualize: false
